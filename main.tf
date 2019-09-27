@@ -1,19 +1,16 @@
 locals {
-  ## Workaround to solve this problem https://github.com/hashicorp/terraform/issues/11210
-  source_documents = [concat(["null"], var.source_documents)]
-
   policies = [
-    length(local.source_documents) > 1 ? element(local.source_documents, 1) : data.aws_iam_policy_document.empty.json,
-    length(local.source_documents) > 2 ? element(local.source_documents, 2) : data.aws_iam_policy_document.empty.json,
-    length(local.source_documents) > 3 ? element(local.source_documents, 3) : data.aws_iam_policy_document.empty.json,
-    length(local.source_documents) > 4 ? element(local.source_documents, 4) : data.aws_iam_policy_document.empty.json,
-    length(local.source_documents) > 5 ? element(local.source_documents, 5) : data.aws_iam_policy_document.empty.json,
-    length(local.source_documents) > 6 ? element(local.source_documents, 6) : data.aws_iam_policy_document.empty.json,
-    length(local.source_documents) > 7 ? element(local.source_documents, 7) : data.aws_iam_policy_document.empty.json,
-    length(local.source_documents) > 8 ? element(local.source_documents, 8) : data.aws_iam_policy_document.empty.json,
-    length(local.source_documents) > 9 ? element(local.source_documents, 9) : data.aws_iam_policy_document.empty.json,
-    length(local.source_documents) > 10 ? element(local.source_documents, 10) : data.aws_iam_policy_document.empty.json,
-  ]
+    length(var.source_documents) > 0 ? var.source_documents[0] : data.aws_iam_policy_document.empty.json,
+    length(var.source_documents) > 1 ? var.source_documents[1] : data.aws_iam_policy_document.empty.json,
+    length(var.source_documents) > 2 ? var.source_documents[2] : data.aws_iam_policy_document.empty.json,
+    length(var.source_documents) > 3 ? var.source_documents[3] : data.aws_iam_policy_document.empty.json,
+    length(var.source_documents) > 4 ? var.source_documents[4] : data.aws_iam_policy_document.empty.json,
+    length(var.source_documents) > 5 ? var.source_documents[5] : data.aws_iam_policy_document.empty.json,
+    length(var.source_documents) > 6 ? var.source_documents[6] : data.aws_iam_policy_document.empty.json,
+    length(var.source_documents) > 7 ? var.source_documents[7] : data.aws_iam_policy_document.empty.json,
+    length(var.source_documents) > 8 ? var.source_documents[8] : data.aws_iam_policy_document.empty.json,
+    length(var.source_documents) > 9 ? var.source_documents[9] : data.aws_iam_policy_document.empty.json,
+    ]
 }
 
 data "aws_iam_policy_document" "empty" {
